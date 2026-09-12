@@ -1,0 +1,35 @@
+package androidx.browser.customtabs;
+
+import android.app.Service;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.IBinder;
+import c.d;
+
+/* loaded from: classes.dex */
+public class PostMessageService extends Service {
+
+    /* renamed from: a, reason: collision with root package name */
+    private d.a f2231a = new a();
+
+    /* loaded from: classes.dex */
+    class a extends d.a {
+        a() {
+        }
+
+        @Override // c.d
+        public void E0(c.a aVar, String str, Bundle bundle) {
+            aVar.P0(str, bundle);
+        }
+
+        @Override // c.d
+        public void m(c.a aVar, Bundle bundle) {
+            aVar.S0(bundle);
+        }
+    }
+
+    @Override // android.app.Service
+    public IBinder onBind(Intent intent) {
+        return this.f2231a;
+    }
+}

@@ -1,0 +1,344 @@
+package b4;
+
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteCursor;
+import android.database.sqlite.SQLiteCursorDriver;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQuery;
+import android.database.sqlite.SQLiteStatement;
+import android.database.sqlite.SQLiteTransactionListener;
+import android.os.CancellationSignal;
+import android.text.TextUtils;
+import java.lang.reflect.Method;
+import java.util.List;
+import kotlin.Lazy;
+import kotlin.LazyKt;
+import kotlin.LazyThreadSafetyMode;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function4;
+import kotlin.jvm.internal.DefaultConstructorMarker;
+import kotlin.jvm.internal.Intrinsics;
+
+/* loaded from: classes.dex */
+public final class f implements a4.d {
+
+    /* renamed from: b, reason: collision with root package name */
+    public static final a f16297b = new a(null);
+
+    /* renamed from: c, reason: collision with root package name */
+    private static final String[] f16298c = {"", " OR ROLLBACK ", " OR ABORT ", " OR FAIL ", " OR IGNORE ", " OR REPLACE "};
+
+    /* renamed from: d, reason: collision with root package name */
+    private static final String[] f16299d = new String[0];
+
+    /* renamed from: e, reason: collision with root package name */
+    private static final Lazy f16300e;
+
+    /* renamed from: f, reason: collision with root package name */
+    private static final Lazy f16301f;
+
+    /* renamed from: a, reason: collision with root package name */
+    private final SQLiteDatabase f16302a;
+
+    /* loaded from: classes2.dex */
+    public static final class a {
+        private a() {
+        }
+
+        public /* synthetic */ a(DefaultConstructorMarker defaultConstructorMarker) {
+            this();
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        public final Method c() {
+            return (Method) f.f16301f.getValue();
+        }
+
+        /* JADX INFO: Access modifiers changed from: private */
+        public final Method d() {
+            return (Method) f.f16300e.getValue();
+        }
+    }
+
+    static {
+        LazyThreadSafetyMode lazyThreadSafetyMode = LazyThreadSafetyMode.NONE;
+        f16300e = LazyKt.a(lazyThreadSafetyMode, new Function0() { // from class: b4.d
+            @Override // kotlin.jvm.functions.Function0
+            public final Object invoke() {
+                Method q11;
+                q11 = f.q();
+                return q11;
+            }
+        });
+        f16301f = LazyKt.a(lazyThreadSafetyMode, new Function0() { // from class: b4.e
+            @Override // kotlin.jvm.functions.Function0
+            public final Object invoke() {
+                Method o11;
+                o11 = f.o();
+                return o11;
+            }
+        });
+    }
+
+    public f(SQLiteDatabase delegate) {
+        Intrinsics.h(delegate, "delegate");
+        this.f16302a = delegate;
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public static final Method o() {
+        Class<?> returnType;
+        try {
+            Method d11 = f16297b.d();
+            if (d11 == null || (returnType = d11.getReturnType()) == null) {
+                return null;
+            }
+            Class<?> cls = Integer.TYPE;
+            return returnType.getDeclaredMethod("beginTransaction", cls, SQLiteTransactionListener.class, cls, CancellationSignal.class);
+        } catch (Throwable unused) {
+            return null;
+        }
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public static final Method q() {
+        try {
+            Method declaredMethod = SQLiteDatabase.class.getDeclaredMethod("getThreadSession", null);
+            declaredMethod.setAccessible(true);
+            return declaredMethod;
+        } catch (Throwable unused) {
+            return null;
+        }
+    }
+
+    private final void r(SQLiteTransactionListener sQLiteTransactionListener) {
+        a aVar = f16297b;
+        if (aVar.c() == null || aVar.d() == null) {
+            if (sQLiteTransactionListener != null) {
+                p(sQLiteTransactionListener);
+                return;
+            } else {
+                A();
+                return;
+            }
+        }
+        Method c11 = aVar.c();
+        Intrinsics.e(c11);
+        Method d11 = aVar.d();
+        Intrinsics.e(d11);
+        Object invoke = d11.invoke(this.f16302a, null);
+        if (invoke == null) {
+            throw new IllegalStateException("Required value was null.");
+        }
+        c11.invoke(invoke, 0, sQLiteTransactionListener, 0, null);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public static final SQLiteCursor t(a4.g gVar, SQLiteDatabase sQLiteDatabase, SQLiteCursorDriver sQLiteCursorDriver, String str, SQLiteQuery sQLiteQuery) {
+        Intrinsics.e(sQLiteQuery);
+        gVar.b(new i(sQLiteQuery));
+        return new SQLiteCursor(sQLiteCursorDriver, str, sQLiteQuery);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public static final Cursor u(Function4 function4, SQLiteDatabase sQLiteDatabase, SQLiteCursorDriver sQLiteCursorDriver, String str, SQLiteQuery sQLiteQuery) {
+        return (Cursor) function4.invoke(sQLiteDatabase, sQLiteCursorDriver, str, sQLiteQuery);
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public static final Cursor v(a4.g gVar, SQLiteDatabase sQLiteDatabase, SQLiteCursorDriver sQLiteCursorDriver, String str, SQLiteQuery sQLiteQuery) {
+        Intrinsics.e(sQLiteQuery);
+        gVar.b(new i(sQLiteQuery));
+        return new SQLiteCursor(sQLiteCursorDriver, str, sQLiteQuery);
+    }
+
+    @Override // a4.d
+    public void A() {
+        this.f16302a.beginTransaction();
+    }
+
+    @Override // a4.d
+    public List D() {
+        return this.f16302a.getAttachedDbs();
+    }
+
+    @Override // a4.d
+    public void E(String sql) {
+        Intrinsics.h(sql, "sql");
+        this.f16302a.execSQL(sql);
+    }
+
+    @Override // a4.d
+    public void I() {
+        this.f16302a.setTransactionSuccessful();
+    }
+
+    @Override // a4.d
+    public void J(String sql, Object[] bindArgs) {
+        Intrinsics.h(sql, "sql");
+        Intrinsics.h(bindArgs, "bindArgs");
+        this.f16302a.execSQL(sql, bindArgs);
+    }
+
+    @Override // a4.d
+    public void K() {
+        this.f16302a.beginTransactionNonExclusive();
+    }
+
+    @Override // a4.d
+    public void L() {
+        this.f16302a.endTransaction();
+    }
+
+    @Override // a4.d
+    public void S(int i11) {
+        this.f16302a.setVersion(i11);
+    }
+
+    @Override // a4.d
+    public a4.h W(String sql) {
+        Intrinsics.h(sql, "sql");
+        SQLiteStatement compileStatement = this.f16302a.compileStatement(sql);
+        Intrinsics.g(compileStatement, "compileStatement(...)");
+        return new j(compileStatement);
+    }
+
+    @Override // a4.d
+    public void Y() {
+        r(null);
+    }
+
+    @Override // a4.d
+    public Cursor b0(final a4.g query) {
+        Intrinsics.h(query, "query");
+        final Function4 function4 = new Function4() { // from class: b4.b
+            @Override // kotlin.jvm.functions.Function4
+            public final Object invoke(Object obj, Object obj2, Object obj3, Object obj4) {
+                SQLiteCursor t11;
+                t11 = f.t(a4.g.this, (SQLiteDatabase) obj, (SQLiteCursorDriver) obj2, (String) obj3, (SQLiteQuery) obj4);
+                return t11;
+            }
+        };
+        Cursor rawQueryWithFactory = this.f16302a.rawQueryWithFactory(new SQLiteDatabase.CursorFactory() { // from class: b4.c
+            @Override // android.database.sqlite.SQLiteDatabase.CursorFactory
+            public final Cursor newCursor(SQLiteDatabase sQLiteDatabase, SQLiteCursorDriver sQLiteCursorDriver, String str, SQLiteQuery sQLiteQuery) {
+                Cursor u11;
+                u11 = f.u(Function4.this, sQLiteDatabase, sQLiteCursorDriver, str, sQLiteQuery);
+                return u11;
+            }
+        }, query.d(), f16299d, null);
+        Intrinsics.g(rawQueryWithFactory, "rawQueryWithFactory(...)");
+        return rawQueryWithFactory;
+    }
+
+    @Override // java.io.Closeable, java.lang.AutoCloseable
+    public void close() {
+        this.f16302a.close();
+    }
+
+    @Override // a4.d
+    public Cursor e0(final a4.g query, CancellationSignal cancellationSignal) {
+        Intrinsics.h(query, "query");
+        SQLiteDatabase sQLiteDatabase = this.f16302a;
+        SQLiteDatabase.CursorFactory cursorFactory = new SQLiteDatabase.CursorFactory() { // from class: b4.a
+            @Override // android.database.sqlite.SQLiteDatabase.CursorFactory
+            public final Cursor newCursor(SQLiteDatabase sQLiteDatabase2, SQLiteCursorDriver sQLiteCursorDriver, String str, SQLiteQuery sQLiteQuery) {
+                Cursor v11;
+                v11 = f.v(a4.g.this, sQLiteDatabase2, sQLiteCursorDriver, str, sQLiteQuery);
+                return v11;
+            }
+        };
+        String d11 = query.d();
+        String[] strArr = f16299d;
+        Intrinsics.e(cancellationSignal);
+        Cursor rawQueryWithFactory = sQLiteDatabase.rawQueryWithFactory(cursorFactory, d11, strArr, null, cancellationSignal);
+        Intrinsics.g(rawQueryWithFactory, "rawQueryWithFactory(...)");
+        return rawQueryWithFactory;
+    }
+
+    @Override // a4.d
+    public int f0(String table, int i11, ContentValues values, String str, Object[] objArr) {
+        Intrinsics.h(table, "table");
+        Intrinsics.h(values, "values");
+        if (values.size() == 0) {
+            throw new IllegalArgumentException("Empty values");
+        }
+        int size = values.size();
+        int length = objArr == null ? size : objArr.length + size;
+        Object[] objArr2 = new Object[length];
+        StringBuilder sb2 = new StringBuilder();
+        sb2.append("UPDATE ");
+        sb2.append(f16298c[i11]);
+        sb2.append(table);
+        sb2.append(" SET ");
+        int i12 = 0;
+        for (String str2 : values.keySet()) {
+            sb2.append(i12 > 0 ? "," : "");
+            sb2.append(str2);
+            objArr2[i12] = values.get(str2);
+            sb2.append("=?");
+            i12++;
+        }
+        if (objArr != null) {
+            for (int i13 = size; i13 < length; i13++) {
+                objArr2[i13] = objArr[i13 - size];
+            }
+        }
+        if (!TextUtils.isEmpty(str)) {
+            sb2.append(" WHERE ");
+            sb2.append(str);
+        }
+        a4.h W = W(sb2.toString());
+        a4.a.f224c.b(W, objArr2);
+        return W.F();
+    }
+
+    @Override // a4.d
+    public String getPath() {
+        return this.f16302a.getPath();
+    }
+
+    @Override // a4.d
+    public int getVersion() {
+        return this.f16302a.getVersion();
+    }
+
+    @Override // a4.d
+    public Cursor i0(String query) {
+        Intrinsics.h(query, "query");
+        return b0(new a4.a(query));
+    }
+
+    @Override // a4.d
+    public boolean isOpen() {
+        return this.f16302a.isOpen();
+    }
+
+    @Override // a4.d
+    public long j0(String table, int i11, ContentValues values) {
+        Intrinsics.h(table, "table");
+        Intrinsics.h(values, "values");
+        return this.f16302a.insertWithOnConflict(table, null, values, i11);
+    }
+
+    public void p(SQLiteTransactionListener transactionListener) {
+        Intrinsics.h(transactionListener, "transactionListener");
+        this.f16302a.beginTransactionWithListener(transactionListener);
+    }
+
+    public final boolean s(SQLiteDatabase sqLiteDatabase) {
+        Intrinsics.h(sqLiteDatabase, "sqLiteDatabase");
+        return Intrinsics.c(this.f16302a, sqLiteDatabase);
+    }
+
+    @Override // a4.d
+    public boolean s0() {
+        return this.f16302a.inTransaction();
+    }
+
+    @Override // a4.d
+    public boolean w0() {
+        return this.f16302a.isWriteAheadLoggingEnabled();
+    }
+}

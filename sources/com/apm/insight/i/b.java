@@ -1,0 +1,132 @@
+package com.apm.insight.i;
+
+import android.content.Context;
+import android.os.Process;
+import android.os.SystemClock;
+import androidx.annotation.NonNull;
+import com.apm.insight.CrashType;
+import com.apm.insight.Npth;
+import com.apm.insight.e;
+import com.apm.insight.g.c;
+import com.apm.insight.l.f;
+import com.apm.insight.l.j;
+import com.apm.insight.l.m;
+import com.apm.insight.nativecrash.NativeImpl;
+import com.apm.insight.runtime.a.c;
+import com.apm.insight.runtime.h;
+import com.mbridge.msdk.foundation.entity.CampaignEx;
+import java.io.File;
+import java.io.IOException;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+/* loaded from: classes2.dex */
+public final class b implements c {
+
+    /* renamed from: a, reason: collision with root package name */
+    private Context f19637a;
+
+    public b(@NonNull Context context) {
+        this.f19637a = context;
+    }
+
+    private synchronized void b(final long j11, final Thread thread, final Throwable th2, final String str, final String str2, final boolean z10) {
+        final File file = new File(j.a(this.f19637a), str);
+        com.apm.insight.g.a.a().a(file.getName());
+        file.mkdirs();
+        f.d(file);
+        final boolean c11 = m.c(th2);
+        com.apm.insight.entity.a a11 = com.apm.insight.runtime.a.f.a().a(CrashType.LAUNCH, new c.a() { // from class: com.apm.insight.i.b.1
+
+            /* renamed from: a, reason: collision with root package name */
+            private long f19638a = 0;
+
+            @Override // com.apm.insight.runtime.a.c.a
+            public final com.apm.insight.entity.a a(int i11, com.apm.insight.entity.a aVar) {
+                this.f19638a = SystemClock.uptimeMillis();
+                if (i11 == 0) {
+                    aVar.a("stack", (Object) m.a(th2));
+                    aVar.a("event_type", "start_crash");
+                    aVar.a("isOOM", Boolean.valueOf(c11));
+                    aVar.a("crash_time", Long.valueOf(j11));
+                    aVar.a("launch_mode", Integer.valueOf(com.apm.insight.runtime.a.b.b()));
+                    aVar.a("launch_time", Long.valueOf(com.apm.insight.runtime.a.b.c()));
+                    String str3 = str2;
+                    if (str3 != null) {
+                        aVar.a("crash_md5", (Object) str3);
+                        aVar.a("crash_md5", str2);
+                        boolean z11 = z10;
+                        if (z11) {
+                            aVar.a("has_ignore", String.valueOf(z11));
+                        }
+                    }
+                } else if (i11 == 1) {
+                    aVar.a(CampaignEx.JSON_KEY_TIMESTAMP, Long.valueOf(j11));
+                    aVar.a("main_process", Boolean.valueOf(com.apm.insight.l.a.b(b.this.f19637a)));
+                    aVar.a("crash_type", CrashType.JAVA);
+                    Thread thread2 = thread;
+                    aVar.a("crash_thread_name", (Object) (thread2 != null ? thread2.getName() : ""));
+                    aVar.a("tid", Integer.valueOf(Process.myTid()));
+                    aVar.a("crash_after_crash", Npth.hasCrashWhenJavaCrash() ? "true" : "false");
+                    aVar.a("crash_after_native", NativeImpl.e() ? "true" : "false");
+                    com.apm.insight.g.a.a().a(thread, th2, true, aVar);
+                } else if (i11 == 2) {
+                    if (c11) {
+                        com.apm.insight.l.a.a(b.this.f19637a, aVar.c());
+                    }
+                    aVar.a("launch_did", (Object) a.a(b.this.f19637a));
+                    if (e.x()) {
+                        JSONArray b11 = com.apm.insight.b.f.b().b();
+                        long uptimeMillis = SystemClock.uptimeMillis();
+                        JSONObject a12 = com.apm.insight.b.f.b().a(uptimeMillis).a();
+                        JSONArray a13 = com.apm.insight.b.j.a(uptimeMillis);
+                        aVar.a("history_message", (Object) b11);
+                        aVar.a("current_message", a12);
+                        aVar.a("pending_messages", (Object) a13);
+                    }
+                    aVar.a("disable_looper_monitor", String.valueOf(com.apm.insight.runtime.a.c()));
+                    aVar.a("npth_force_apm_crash", String.valueOf(com.apm.insight.c.a.a()));
+                } else if (i11 == 3) {
+                    JSONObject b12 = m.b(Thread.currentThread().getName());
+                    if (b12 != null) {
+                        aVar.a("all_thread_stacks", b12);
+                    }
+                    aVar.a("logcat", (Object) h.a(e.f()));
+                } else if (i11 != 4) {
+                    if (i11 == 5) {
+                        aVar.a("crash_uuid", (Object) str);
+                    }
+                } else if (!c11) {
+                    com.apm.insight.l.a.a(b.this.f19637a, aVar.c());
+                }
+                return aVar;
+            }
+
+            @Override // com.apm.insight.runtime.a.c.a
+            public final com.apm.insight.entity.a b(int i11, com.apm.insight.entity.a aVar) {
+                try {
+                    f.a(new File(file, file.getName() + "." + i11), aVar.c());
+                } catch (IOException e11) {
+                    e11.printStackTrace();
+                }
+                return aVar;
+            }
+        });
+        long currentTimeMillis = System.currentTimeMillis() - j11;
+        try {
+            a11.a("crash_type", "normal");
+            a11.b("crash_cost", String.valueOf(currentTimeMillis));
+            a11.a("crash_cost", String.valueOf(currentTimeMillis / 1000));
+        } catch (Throwable th3) {
+            com.apm.insight.c.a();
+            com.apm.insight.runtime.j.a(th3, "NPTH_CATCH");
+        }
+        if (Npth.isStopUpload()) {
+        }
+    }
+
+    @Override // com.apm.insight.g.c
+    public final void a(long j11, Thread thread, Throwable th2, String str, String str2, boolean z10) {
+        b(j11, thread, th2, str, str2, z10);
+    }
+}

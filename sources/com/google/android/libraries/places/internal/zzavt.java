@@ -1,0 +1,25 @@
+package com.google.android.libraries.places.internal;
+
+import java.io.IOException;
+
+/* JADX INFO: Access modifiers changed from: package-private */
+/* loaded from: classes4.dex */
+public interface zzavt<T> {
+    int zza(Object obj);
+
+    int zzb(Object obj);
+
+    Object zzc();
+
+    void zzd(Object obj);
+
+    void zze(Object obj, Object obj2);
+
+    void zzf(Object obj, zzavs zzavsVar, zzatf zzatfVar) throws IOException;
+
+    boolean zzg(Object obj, Object obj2);
+
+    boolean zzh(Object obj);
+
+    void zzj(Object obj, zzasy zzasyVar) throws IOException;
+}

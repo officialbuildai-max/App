@@ -1,0 +1,183 @@
+package com.transsnet.downloader.dialog;
+
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.TextView;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.fragment.app.FragmentManager;
+import com.cloud.tmc.kernel.minicover.NativeComponentConstants;
+import com.mbridge.msdk.MBridgeConstans;
+import com.transsion.baseui.dialog.BaseDialog;
+import com.transsion.push.PushConstants;
+import com.transsnet.downloader.R$layout;
+import com.transsnet.downloader.R$style;
+import com.vungle.ads.internal.protos.Sdk$SDKMetric;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+
+@Metadata(d1 = {"\u0000n\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010$\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0010\b\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0002\b\u0006\u0018\u0000 52\u00020\u0001:\u00016B\u0007¢\u0006\u0004\b\u0002\u0010\u0003J\u0017\u0010\u0007\u001a\u00020\u00062\u0006\u0010\u0005\u001a\u00020\u0004H\u0002¢\u0006\u0004\b\u0007\u0010\bJ\u0019\u0010\u000b\u001a\u00020\u00062\b\u0010\n\u001a\u0004\u0018\u00010\tH\u0016¢\u0006\u0004\b\u000b\u0010\fJ!\u0010\r\u001a\u00020\u00062\u0006\u0010\u0005\u001a\u00020\u00042\b\u0010\n\u001a\u0004\u0018\u00010\tH\u0016¢\u0006\u0004\b\r\u0010\u000eJ\u0019\u0010\u0010\u001a\u00020\u000f2\b\u0010\n\u001a\u0004\u0018\u00010\tH\u0016¢\u0006\u0004\b\u0010\u0010\u0011J\u0017\u0010\u0014\u001a\u00020\u00062\u0006\u0010\u0013\u001a\u00020\u0012H\u0016¢\u0006\u0004\b\u0014\u0010\u0015J#\u0010\u0019\u001a\u00020\u00062\u0014\u0010\u0018\u001a\u0010\u0012\u0004\u0012\u00020\u0017\u0012\u0006\u0012\u0004\u0018\u00010\u00170\u0016¢\u0006\u0004\b\u0019\u0010\u001aJ!\u0010\u001e\u001a\u00020\u00062\u0006\u0010\u001c\u001a\u00020\u001b2\b\u0010\u001d\u001a\u0004\u0018\u00010\u0017H\u0016¢\u0006\u0004\b\u001e\u0010\u001fJ\u000f\u0010 \u001a\u00020\u0006H\u0016¢\u0006\u0004\b \u0010\u0003R \u0010$\u001a\f\u0012\u0006\u0012\u0004\u0018\u00010\u0006\u0018\u00010!8\u0002@\u0002X\u0082\u000e¢\u0006\u0006\n\u0004\b\"\u0010#R3\u0010,\u001a\u001f\u0012\u0013\u0012\u00110&¢\u0006\f\b'\u0012\b\b(\u0012\u0004\b\b()\u0012\u0004\u0012\u00020\u0006\u0018\u00010%8\u0002@\u0002X\u0082\u000e¢\u0006\u0006\n\u0004\b*\u0010+R\u0018\u00100\u001a\u0004\u0018\u00010-8\u0002@\u0002X\u0082\u000e¢\u0006\u0006\n\u0004\b.\u0010/R\u0016\u00104\u001a\u0002018\u0002@\u0002X\u0082\u000e¢\u0006\u0006\n\u0004\b2\u00103¨\u00067"}, d2 = {"Lcom/transsnet/downloader/dialog/DownloadInterceptDialog;", "Lcom/transsion/baseui/dialog/BaseDialog;", "<init>", "()V", "Landroid/view/View;", MBridgeConstans.DYNAMIC_VIEW_KEY_VIEW, "", "q0", "(Landroid/view/View;)V", "Landroid/os/Bundle;", "savedInstanceState", "onCreate", "(Landroid/os/Bundle;)V", "onViewCreated", "(Landroid/view/View;Landroid/os/Bundle;)V", "Landroid/app/Dialog;", "onCreateDialog", "(Landroid/os/Bundle;)Landroid/app/Dialog;", "Landroid/content/DialogInterface;", "dialog", "onDismiss", "(Landroid/content/DialogInterface;)V", "", "", "map", "u0", "(Ljava/util/Map;)V", "Landroidx/fragment/app/FragmentManager;", "manager", "tag", PushConstants.PUSH_SERVICE_TYPE_SHOW, "(Landroidx/fragment/app/FragmentManager;Ljava/lang/String;)V", "onDestroyView", "Lkotlin/Function0;", "c", "Lkotlin/jvm/functions/Function0;", "dismissListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "ok", "d", "Lkotlin/jvm/functions/Function1;", "callback", "Lpy/g;", "e", "Lpy/g;", "viewBinding", "", "f", "Z", "isReport", be.g.f16474b, "a", "Downloader_psRelease"}, k = 1, mv = {2, 1, 0}, xi = Sdk$SDKMetric.SDKMetricType.AD_SHOW_TO_VALIDATION_DURATION_MS_VALUE)
+/* loaded from: classes7.dex */
+public final class DownloadInterceptDialog extends BaseDialog {
+
+    /* renamed from: c, reason: collision with root package name and from kotlin metadata */
+    private Function0 dismissListener;
+
+    /* renamed from: d, reason: collision with root package name and from kotlin metadata */
+    private Function1 callback;
+
+    /* renamed from: e, reason: collision with root package name and from kotlin metadata */
+    private py.g viewBinding;
+
+    /* renamed from: f, reason: collision with root package name and from kotlin metadata */
+    private boolean isReport;
+
+    public DownloadInterceptDialog() {
+        super(R$layout.dialog_download_intercept);
+    }
+
+    private final void q0(View view) {
+        AppCompatImageView appCompatImageView;
+        TextView textView;
+        View view2;
+        py.g a11 = py.g.a(view);
+        this.viewBinding = a11;
+        if (a11 != null && (view2 = a11.f72842c) != null) {
+            view2.setOnClickListener(new View.OnClickListener() { // from class: com.transsnet.downloader.dialog.g
+                @Override // android.view.View.OnClickListener
+                public final void onClick(View view3) {
+                    DownloadInterceptDialog.r0(DownloadInterceptDialog.this, view3);
+                }
+            });
+        }
+        py.g gVar = this.viewBinding;
+        if (gVar != null && (textView = gVar.f72841b) != null) {
+            textView.setOnClickListener(new View.OnClickListener() { // from class: com.transsnet.downloader.dialog.h
+                @Override // android.view.View.OnClickListener
+                public final void onClick(View view3) {
+                    DownloadInterceptDialog.s0(DownloadInterceptDialog.this, view3);
+                }
+            });
+        }
+        py.g gVar2 = this.viewBinding;
+        if (gVar2 == null || (appCompatImageView = gVar2.f72845f) == null) {
+            return;
+        }
+        appCompatImageView.setOnClickListener(new View.OnClickListener() { // from class: com.transsnet.downloader.dialog.i
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view3) {
+                DownloadInterceptDialog.t0(DownloadInterceptDialog.this, view3);
+            }
+        });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public static final void r0(DownloadInterceptDialog downloadInterceptDialog, View view) {
+        Function1 function1 = downloadInterceptDialog.callback;
+        if (function1 != null) {
+            function1.invoke(Integer.valueOf(com.transsnet.downloader.manager.f.f59601a.d()));
+        }
+        HashMap hashMap = new HashMap();
+        hashMap.put(NativeComponentConstants.KEY_COMPONENT_TYPE, "watch_ad");
+        downloadInterceptDialog.u0(hashMap);
+        downloadInterceptDialog.isReport = true;
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public static final void s0(DownloadInterceptDialog downloadInterceptDialog, View view) {
+        Function1 function1 = downloadInterceptDialog.callback;
+        if (function1 != null) {
+            function1.invoke(Integer.valueOf(com.transsnet.downloader.manager.f.f59601a.c()));
+        }
+        HashMap hashMap = new HashMap();
+        hashMap.put(NativeComponentConstants.KEY_COMPONENT_TYPE, "share");
+        downloadInterceptDialog.u0(hashMap);
+        downloadInterceptDialog.isReport = true;
+        downloadInterceptDialog.dismissAllowingStateLoss();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public static final void t0(DownloadInterceptDialog downloadInterceptDialog, View view) {
+        HashMap hashMap = new HashMap();
+        hashMap.put(NativeComponentConstants.KEY_COMPONENT_TYPE, "back");
+        downloadInterceptDialog.u0(hashMap);
+        downloadInterceptDialog.isReport = true;
+        downloadInterceptDialog.dismissAllowingStateLoss();
+    }
+
+    @Override // androidx.fragment.app.DialogFragment, androidx.fragment.app.Fragment
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStyle(0, R$style.center_DialogStyle);
+    }
+
+    @Override // androidx.fragment.app.DialogFragment
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Context requireContext = requireContext();
+        Intrinsics.g(requireContext, "requireContext(...)");
+        androidx.appcompat.app.w wVar = new androidx.appcompat.app.w(requireContext, getTheme());
+        Window window = wVar.getWindow();
+        if (window != null) {
+            window.setGravity(17);
+            window.setDimAmount(0.5f);
+            WindowManager.LayoutParams attributes = window.getAttributes();
+            if (attributes == null) {
+                attributes = new WindowManager.LayoutParams();
+            }
+            attributes.width = com.transsion.baseui.util.a.f43556a.b(requireContext);
+            window.setBackgroundDrawable(null);
+            window.setAttributes(attributes);
+        }
+        wVar.setCancelable(false);
+        wVar.setCanceledOnTouchOutside(false);
+        return wVar;
+    }
+
+    @Override // androidx.fragment.app.DialogFragment, androidx.fragment.app.Fragment
+    public void onDestroyView() {
+        super.onDestroyView();
+        HashMap hashMap = new HashMap();
+        hashMap.put(NativeComponentConstants.KEY_COMPONENT_TYPE, "others");
+        u0(hashMap);
+        this.isReport = false;
+    }
+
+    @Override // com.transsion.baseui.dialog.BaseDialog, androidx.fragment.app.DialogFragment, android.content.DialogInterface.OnDismissListener
+    public void onDismiss(DialogInterface dialog) {
+        Intrinsics.h(dialog, "dialog");
+        super.onDismiss(dialog);
+        Function0 function0 = this.dismissListener;
+        if (function0 != null) {
+        }
+    }
+
+    @Override // androidx.fragment.app.Fragment
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        Intrinsics.h(view, "view");
+        super.onViewCreated(view, savedInstanceState);
+        q0(view);
+    }
+
+    @Override // com.transsion.baseui.dialog.BaseDialog, androidx.fragment.app.DialogFragment
+    public void show(FragmentManager manager, String tag) {
+        Intrinsics.h(manager, "manager");
+        super.show(manager, tag);
+        hj.i.f64628a.D("download_intercept", new HashMap());
+    }
+
+    public final void u0(Map map) {
+        Intrinsics.h(map, "map");
+        if (this.isReport) {
+            return;
+        }
+        hj.i.f64628a.p("download_intercept", map);
+    }
+}

@@ -1,0 +1,75 @@
+package sw;
+
+import androidx.view.b0;
+import androidx.view.t0;
+import com.transsion.usercenter.message.model.ResponseMessage;
+import kotlin.Lazy;
+import kotlin.LazyKt;
+import kotlin.LazyThreadSafetyMode;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+
+/* loaded from: classes7.dex */
+public final class d extends t0 {
+
+    /* renamed from: a, reason: collision with root package name */
+    private final Lazy f76079a = LazyKt.a(LazyThreadSafetyMode.NONE, new Function0() { // from class: sw.b
+        @Override // kotlin.jvm.functions.Function0
+        public final Object invoke() {
+            a h11;
+            h11 = d.h();
+            return h11;
+        }
+    });
+
+    /* renamed from: b, reason: collision with root package name */
+    private final Lazy f76080b = LazyKt.b(new Function0() { // from class: sw.c
+        @Override // kotlin.jvm.functions.Function0
+        public final Object invoke() {
+            b0 g11;
+            g11 = d.g();
+            return g11;
+        }
+    });
+
+    /* loaded from: classes7.dex */
+    public static final class a extends sg.a {
+        a() {
+        }
+
+        @Override // sg.a
+        public void a(String str, String str2) {
+            d.this.d().n(null);
+        }
+
+        @Override // sg.a
+        /* renamed from: e, reason: merged with bridge method [inline-methods] */
+        public void c(ResponseMessage responseMessage) {
+            d.this.d().n(responseMessage);
+        }
+    }
+
+    private final sw.a e() {
+        return (sw.a) this.f76079a.getValue();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public static final b0 g() {
+        return new b0();
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public static final sw.a h() {
+        return (sw.a) zg.c.f79537e.a().h(sw.a.class);
+    }
+
+    public final b0 d() {
+        return (b0) this.f76080b.getValue();
+    }
+
+    public final void f(String page, String type) {
+        Intrinsics.h(page, "page");
+        Intrinsics.h(type, "type");
+        e().a(vg.a.f77447a.a(), page, type, 30).f(sg.d.f75472a.c()).subscribe(new a());
+    }
+}

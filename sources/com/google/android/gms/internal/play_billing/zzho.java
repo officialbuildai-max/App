@@ -1,0 +1,54 @@
+package com.google.android.gms.internal.play_billing;
+
+import okio.Utf8;
+
+/* loaded from: classes4.dex */
+final class zzho {
+    /* JADX INFO: Access modifiers changed from: package-private */
+    public static /* bridge */ /* synthetic */ void zza(byte b11, byte b12, byte b13, byte b14, char[] cArr, int i11) {
+        if (zze(b12) || (((b11 << 28) + (b12 + 112)) >> 30) != 0 || zze(b13) || zze(b14)) {
+            throw zzff.zzc();
+        }
+        int i12 = ((b11 & 7) << 18) | ((b12 & Utf8.REPLACEMENT_BYTE) << 12) | ((b13 & Utf8.REPLACEMENT_BYTE) << 6) | (b14 & Utf8.REPLACEMENT_BYTE);
+        cArr[i11] = (char) ((i12 >>> 10) + Utf8.HIGH_SURROGATE_HEADER);
+        cArr[i11 + 1] = (char) ((i12 & 1023) + Utf8.LOG_SURROGATE_HEADER);
+    }
+
+    /* JADX INFO: Access modifiers changed from: package-private */
+    public static /* bridge */ /* synthetic */ void zzb(byte b11, byte b12, byte b13, char[] cArr, int i11) {
+        if (!zze(b12)) {
+            if (b11 == -32) {
+                if (b12 >= -96) {
+                    b11 = -32;
+                }
+            }
+            if (b11 == -19) {
+                if (b12 < -96) {
+                    b11 = -19;
+                }
+            }
+            if (!zze(b13)) {
+                cArr[i11] = (char) (((b11 & 15) << 12) | ((b12 & Utf8.REPLACEMENT_BYTE) << 6) | (b13 & Utf8.REPLACEMENT_BYTE));
+                return;
+            }
+        }
+        throw zzff.zzc();
+    }
+
+    /* JADX INFO: Access modifiers changed from: package-private */
+    public static /* bridge */ /* synthetic */ void zzc(byte b11, byte b12, char[] cArr, int i11) {
+        if (b11 < -62 || zze(b12)) {
+            throw zzff.zzc();
+        }
+        cArr[i11] = (char) (((b11 & 31) << 6) | (b12 & Utf8.REPLACEMENT_BYTE));
+    }
+
+    /* JADX INFO: Access modifiers changed from: package-private */
+    public static /* bridge */ /* synthetic */ boolean zzd(byte b11) {
+        return b11 >= 0;
+    }
+
+    private static boolean zze(byte b11) {
+        return b11 > -65;
+    }
+}

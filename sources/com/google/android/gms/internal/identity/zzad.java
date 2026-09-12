@@ -1,0 +1,25 @@
+package com.google.android.gms.internal.identity;
+
+import android.app.PendingIntent;
+import android.os.RemoteException;
+import com.google.android.gms.common.api.Api;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.Status;
+
+/* loaded from: classes4.dex */
+final class zzad extends zzae {
+    final /* synthetic */ PendingIntent zza;
+
+    /* JADX INFO: Access modifiers changed from: package-private */
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public zzad(zzaf zzafVar, GoogleApiClient googleApiClient, PendingIntent pendingIntent) {
+        super(googleApiClient);
+        this.zza = pendingIntent;
+    }
+
+    @Override // com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl
+    protected final /* bridge */ /* synthetic */ void doExecute(Api.AnyClient anyClient) throws RemoteException {
+        ((zzg) anyClient).zzp(this.zza);
+        setResult((zzad) Status.RESULT_SUCCESS);
+    }
+}

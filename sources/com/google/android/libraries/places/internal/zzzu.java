@@ -1,0 +1,71 @@
+package com.google.android.libraries.places.internal;
+
+/* loaded from: classes4.dex */
+public final class zzzu extends zzatu implements zzavg {
+    private static final zzzu zzb;
+    private static volatile zzavn zze;
+    private int zzf;
+    private int zzg;
+    private int zzh;
+    private int zzi;
+    private int zzj;
+    private int zzk;
+    private zzauc zzl = zzatu.zzax();
+    private int zzm;
+    private int zzn;
+    private int zzo;
+    private int zzp;
+    private int zzq;
+    private int zzr;
+    private int zzs;
+    private int zzt;
+    private int zzu;
+    private int zzv;
+    private int zzw;
+
+    static {
+        zzzu zzzuVar = new zzzu();
+        zzb = zzzuVar;
+        zzatu.zzaE(zzzu.class, zzzuVar);
+    }
+
+    private zzzu() {
+    }
+
+    @Override // com.google.android.libraries.places.internal.zzatu
+    public final Object zzb(int i11, Object obj, Object obj2) {
+        int i12 = i11 - 1;
+        if (i12 == 0) {
+            return (byte) 1;
+        }
+        if (i12 == 2) {
+            return zzatu.zzaB(zzb, "\u0001\u0011\u0000\u0001\u0001\u0011\u0011\u0000\u0001\u0000\u0001င\u0000\u0002င\u0001\u0003င\u0002\u0004င\u0003\u0005င\u0004\u0006\u001b\u0007င\u0005\bင\u0006\tင\u0007\nင\b\u000bင\t\fင\n\rင\u000b\u000eင\f\u000fင\r\u0010င\u000e\u0011င\u000f", new Object[]{"zzf", "zzg", "zzh", "zzi", "zzj", "zzk", "zzl", zzzt.class, "zzm", "zzn", "zzo", "zzp", "zzq", "zzr", "zzs", "zzt", "zzu", "zzv", "zzw"});
+        }
+        if (i12 == 3) {
+            return new zzzu();
+        }
+        if (i12 == 4) {
+            return new zzzr(null);
+        }
+        if (i12 == 5) {
+            return zzb;
+        }
+        if (i12 != 6) {
+            return null;
+        }
+        zzavn zzavnVar = zze;
+        if (zzavnVar == null) {
+            synchronized (zzzu.class) {
+                try {
+                    zzavnVar = zze;
+                    if (zzavnVar == null) {
+                        zzavnVar = new zzatp(zzb);
+                        zze = zzavnVar;
+                    }
+                } finally {
+                }
+            }
+        }
+        return zzavnVar;
+    }
+}

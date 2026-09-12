@@ -1,0 +1,50 @@
+package com.google.android.gms.measurement.internal;
+
+/* JADX INFO: Access modifiers changed from: package-private */
+/* loaded from: classes4.dex */
+public abstract class zzh extends zze {
+    private boolean zza;
+
+    /* JADX INFO: Access modifiers changed from: package-private */
+    public zzh(zzhy zzhyVar) {
+        super(zzhyVar);
+        this.zzu.zzaa();
+    }
+
+    /* JADX INFO: Access modifiers changed from: protected */
+    public final void zzu() {
+        if (!zzy()) {
+            throw new IllegalStateException("Not initialized");
+        }
+    }
+
+    public final void zzv() {
+        if (this.zza) {
+            throw new IllegalStateException("Can't initialize twice");
+        }
+        if (zzz()) {
+            return;
+        }
+        this.zzu.zzz();
+        this.zza = true;
+    }
+
+    public final void zzw() {
+        if (this.zza) {
+            throw new IllegalStateException("Can't initialize twice");
+        }
+        zzx();
+        this.zzu.zzz();
+        this.zza = true;
+    }
+
+    protected void zzx() {
+    }
+
+    /* JADX INFO: Access modifiers changed from: package-private */
+    public final boolean zzy() {
+        return this.zza;
+    }
+
+    protected abstract boolean zzz();
+}

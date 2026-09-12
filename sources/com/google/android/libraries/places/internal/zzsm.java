@@ -1,0 +1,99 @@
+package com.google.android.libraries.places.internal;
+
+/* loaded from: classes4.dex */
+public final class zzsm extends zzatu implements zzavg {
+    private static final zzsm zzb;
+    private static volatile zzavn zze;
+    private zzbf zzA;
+    private zzae zzB;
+    private zzcg zzC;
+    private zzbl zzD;
+    private int zzf;
+    private zzagi zzh;
+    private zzus zzi;
+    private zzajj zzj;
+    private zzadd zzk;
+    private zzyk zzl;
+    private zzbw zzm;
+    private zzum zzn;
+    private zzts zzo;
+    private zzvr zzp;
+    private zzaaj zzq;
+    private zzabb zzr;
+    private zzabe zzs;
+    private zzta zzt;
+    private zzwl zzu;
+    private zzc zzv;
+    private zzan zzw;
+    private zzav zzx;
+    private zzcy zzy;
+    private zzay zzz;
+    private byte zzE = 2;
+    private int zzg = 1;
+
+    static {
+        zzsm zzsmVar = new zzsm();
+        zzb = zzsmVar;
+        zzatu.zzaE(zzsm.class, zzsmVar);
+    }
+
+    private zzsm() {
+    }
+
+    public static zzsk zza() {
+        return (zzsk) zzb.zzar();
+    }
+
+    /* JADX INFO: Access modifiers changed from: package-private */
+    public static /* synthetic */ void zzd(zzsm zzsmVar, zzagi zzagiVar) {
+        zzagiVar.getClass();
+        zzsmVar.zzh = zzagiVar;
+        zzsmVar.zzf |= 2;
+    }
+
+    /* JADX INFO: Access modifiers changed from: package-private */
+    public static /* synthetic */ void zze(zzsm zzsmVar, int i11) {
+        zzsmVar.zzg = 1;
+        zzsmVar.zzf = 1 | zzsmVar.zzf;
+    }
+
+    /* JADX INFO: Access modifiers changed from: protected */
+    @Override // com.google.android.libraries.places.internal.zzatu
+    public final Object zzb(int i11, Object obj, Object obj2) {
+        int i12 = i11 - 1;
+        if (i12 == 0) {
+            return Byte.valueOf(this.zzE);
+        }
+        if (i12 == 2) {
+            return zzatu.zzaB(zzb, "\u0001\u0018\u0000\u0001\u0001\u0019\u0018\u0000\u0000\u0002\u0001᠌\u0000\u0002ᐉ\u0001\u0003ᐉ\u0002\u0004ဉ\u0003\u0005ဉ\u0004\u0006ဉ\u0005\u0007ဉ\u0006\bဉ\u0007\tဉ\b\nဉ\t\u000bဉ\n\fဉ\u000b\rဉ\f\u000fဉ\r\u0010ဉ\u000e\u0011ဉ\u000f\u0012ဉ\u0010\u0013ဉ\u0011\u0014ဉ\u0012\u0015ဉ\u0013\u0016ဉ\u0014\u0017ဉ\u0015\u0018ဉ\u0016\u0019ဉ\u0017", new Object[]{"zzf", "zzg", zzsl.zza, "zzh", "zzi", "zzj", "zzk", "zzl", "zzm", "zzn", "zzo", "zzp", "zzq", "zzr", "zzs", "zzt", "zzu", "zzv", "zzw", "zzx", "zzy", "zzz", "zzA", "zzB", "zzC", "zzD"});
+        }
+        if (i12 == 3) {
+            return new zzsm();
+        }
+        zzsj zzsjVar = null;
+        if (i12 == 4) {
+            return new zzsk(zzsjVar);
+        }
+        if (i12 == 5) {
+            return zzb;
+        }
+        if (i12 != 6) {
+            this.zzE = obj == null ? (byte) 0 : (byte) 1;
+            return null;
+        }
+        zzavn zzavnVar = zze;
+        if (zzavnVar == null) {
+            synchronized (zzsm.class) {
+                try {
+                    zzavnVar = zze;
+                    if (zzavnVar == null) {
+                        zzavnVar = new zzatp(zzb);
+                        zze = zzavnVar;
+                    }
+                } finally {
+                }
+            }
+        }
+        return zzavnVar;
+    }
+}

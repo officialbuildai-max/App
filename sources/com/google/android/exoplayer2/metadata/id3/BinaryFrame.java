@@ -1,0 +1,62 @@
+package com.google.android.exoplayer2.metadata.id3;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+import androidx.annotation.Nullable;
+import com.google.android.exoplayer2.util.p0;
+import java.util.Arrays;
+
+/* loaded from: classes3.dex */
+public final class BinaryFrame extends Id3Frame {
+    public static final Parcelable.Creator<BinaryFrame> CREATOR = new a();
+    public final byte[] data;
+
+    /* loaded from: classes3.dex */
+    class a implements Parcelable.Creator {
+        a() {
+        }
+
+        @Override // android.os.Parcelable.Creator
+        /* renamed from: a, reason: merged with bridge method [inline-methods] */
+        public BinaryFrame createFromParcel(Parcel parcel) {
+            return new BinaryFrame(parcel);
+        }
+
+        @Override // android.os.Parcelable.Creator
+        /* renamed from: b, reason: merged with bridge method [inline-methods] */
+        public BinaryFrame[] newArray(int i11) {
+            return new BinaryFrame[i11];
+        }
+    }
+
+    BinaryFrame(Parcel parcel) {
+        super((String) p0.j(parcel.readString()));
+        this.data = (byte[]) p0.j(parcel.createByteArray());
+    }
+
+    public BinaryFrame(String str, byte[] bArr) {
+        super(str);
+        this.data = bArr;
+    }
+
+    public boolean equals(@Nullable Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || BinaryFrame.class != obj.getClass()) {
+            return false;
+        }
+        BinaryFrame binaryFrame = (BinaryFrame) obj;
+        return this.f25489id.equals(binaryFrame.f25489id) && Arrays.equals(this.data, binaryFrame.data);
+    }
+
+    public int hashCode() {
+        return ((527 + this.f25489id.hashCode()) * 31) + Arrays.hashCode(this.data);
+    }
+
+    @Override // android.os.Parcelable
+    public void writeToParcel(Parcel parcel, int i11) {
+        parcel.writeString(this.f25489id);
+        parcel.writeByteArray(this.data);
+    }
+}

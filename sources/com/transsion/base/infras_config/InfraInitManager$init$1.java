@@ -1,0 +1,34 @@
+package com.transsion.base.infras_config;
+
+import com.vungle.ads.internal.protos.Sdk$SDKMetric;
+import kotlin.Metadata;
+import kotlin.Result;
+import kotlin.coroutines.Continuation;
+import kotlin.coroutines.intrinsics.IntrinsicsKt;
+import kotlin.coroutines.jvm.internal.ContinuationImpl;
+import kotlin.coroutines.jvm.internal.DebugMetadata;
+
+/* JADX INFO: Access modifiers changed from: package-private */
+@Metadata(k = 3, mv = {2, 1, 0}, xi = Sdk$SDKMetric.SDKMetricType.AD_SHOW_TO_VALIDATION_DURATION_MS_VALUE)
+@DebugMetadata(c = "com.transsion.base.infras_config.InfraInitManager", f = "InfraInitManager.kt", l = {50}, m = "init-BWLJW6A")
+/* loaded from: classes5.dex */
+public final class InfraInitManager$init$1 extends ContinuationImpl {
+    int label;
+    /* synthetic */ Object result;
+    final /* synthetic */ InfraInitManager this$0;
+
+    /* JADX INFO: Access modifiers changed from: package-private */
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public InfraInitManager$init$1(InfraInitManager infraInitManager, Continuation<? super InfraInitManager$init$1> continuation) {
+        super(continuation);
+        this.this$0 = infraInitManager;
+    }
+
+    @Override // kotlin.coroutines.jvm.internal.BaseContinuationImpl
+    public final Object invokeSuspend(Object obj) {
+        this.result = obj;
+        this.label |= Integer.MIN_VALUE;
+        Object e11 = this.this$0.e(null, null, null, this);
+        return e11 == IntrinsicsKt.f() ? e11 : Result.m1184boximpl(e11);
+    }
+}

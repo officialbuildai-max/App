@@ -1,0 +1,12 @@
+package com.google.android.gms.internal.play_billing;
+
+/* loaded from: classes4.dex */
+final class zzcs {
+    private final String zza;
+
+    /* JADX INFO: Access modifiers changed from: package-private */
+    public static /* bridge */ /* synthetic */ String zza(zzcs zzcsVar) {
+        String str = zzcsVar.zza;
+        return null;
+    }
+}
